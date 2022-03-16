@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-14 16:28:50
- * @LastEditTime: 2022-03-16 10:32:40
+ * @LastEditTime: 2022-03-16 10:47:20
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -83,7 +83,7 @@ const writeData = async () => {
     })
     return
   }
-  const homedir = window.electron.getHomeDesktopDir("多边形路径.txt");
+  const homedir = window.electron.getHomeDesktopDir("Polygon_path.txt");
   const writer = window.electron.createWriteStream(`${homedir}`, path);
   writer("close", (writerStream) => {
     new Notification("生成文件完成", {

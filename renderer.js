@@ -1,11 +1,11 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-14 16:28:50
- * @LastEditTime: 2022-03-15 18:30:27
+ * @LastEditTime: 2022-03-16 10:32:40
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
- * @FilePath: \选区工具\renderer.js
+ * @FilePath: \desktop-map\renderer.js
  * 
  */
 
@@ -79,14 +79,16 @@ const writeData = async () => {
   if (!path) {
     new Notification("警告", {
       body:
-        `没有路径`
+        `没有覆盖物路径`
     })
+    return
   }
-  const writer = window.electron.createWriteStream('多边形路径.txt', path);
+  const homedir = window.electron.getHomeDesktopDir("多边形路径.txt");
+  const writer = window.electron.createWriteStream(`${homedir}`, path);
   writer("close", (writerStream) => {
     new Notification("生成文件完成", {
       body:
-        `总共写入了${writerStream.bytesWritten}个字节到"${writerStream.path}"文件`
+        `总共写入了${writerStream.bytesWritten}个字节到桌面"${writerStream.path}"文件`
     })
   })
 }
@@ -113,7 +115,7 @@ const addPath = () => {
 }
 
 const removeAllOverlay = () => {
-
+  path = null
   // 清除地图上所有添加的覆盖物
   map.clearMap();
 }

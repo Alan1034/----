@@ -1,11 +1,11 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-14 16:24:24
- * @LastEditTime: 2022-03-15 17:37:02
+ * @LastEditTime: 2022-03-16 10:29:54
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
- * @FilePath: \选区工具\preload.js
+ * @FilePath: \desktop-map\preload.js
  * 
  */
 // window.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +21,8 @@
 
 const { contextBridge } = require('electron')
 const fs = require('fs')
-
+const os = require('os');
+const path = require('path');
 
 contextBridge.exposeInMainWorld(
   'electron',
@@ -34,5 +35,13 @@ contextBridge.exposeInMainWorld(
         func(writerStream)
       })
     },
+    getHomeDesktopDir: (filename) => {
+      const homedir = os.homedir()
+      const dirPath = path.format({
+        dir: path.join(homedir, "Desktop"),
+        base: `${filename}`
+      });
+      return dirPath
+    }
   }
 )

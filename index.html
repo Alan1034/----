@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-11 17:52:18
- * @LastEditTime: 2022-03-16 10:39:23
+ * @LastEditTime: 2022-04-12 16:18:06
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -47,22 +47,19 @@
       <h4 style="margin-bottom: 10px; font-weight: 600">
         利用mouseTool绘制覆盖物
       </h4>
-      <!-- <button class="btn" onclick="drawPolyline()" style="margin-bottom: 5px">绘制线段</button>  -->
-      <button class="btn" onclick="drawPolygon()" style="margin-bottom: 5px">
+      <button class="btn" onclick="polygon.drawPolygon()" style="margin-bottom: 5px">
         绘制多边形
       </button>
-      <!-- <button class="btn" onclick="drawRectangle()" style="margin-bottom: 5px">绘制矩形</button> 
-   <button class="btn" onclick="drawCircle()" style="margin-bottom: 5px">绘制圆形</button>  -->
       <button
         class="btn"
-        onclick="polyEditor?.open()"
+        onclick="polygon.polyEditor?.open()"
         style="margin-bottom: 5px"
       >
         开始编辑
       </button>
       <button
         class="btn"
-        onclick="polyEditor?.close()"
+        onclick="polygon.polyEditor?.close()"
         style="margin-bottom: 5px"
       >
         结束编辑
@@ -79,20 +76,20 @@
               <input id="tipinput" style="width: 125px" />
             </td>
             <td>
-              <button class="btn" onclick="addPath()">添加</button>
+              <button class="btn" onclick="polygon.addPath()">添加</button>
             </td>
           </tr>
         </table>
       </div>
       <button
         class="btn"
-        onclick="removeAllOverlay()"
+        onclick="polygon.removeAllOverlay()"
         style="margin-bottom: 5px"
       >
         清除地图上所有添加的覆盖物
       </button>
-      <button class="btn" onclick="writeData()">导出多边形数据数据</button>
+      <button class="btn" onclick="polygon.writeData()">导出多边形数据数据</button>
     </div>
-    <script src="./renderer.js"></script>
+    <script type="module" src="./functions.js"></script>
   </body>
 </html>

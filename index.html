@@ -1,7 +1,9 @@
+<!-- @format -->
+
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-11 17:52:18
- * @LastEditTime: 2022-04-12 16:18:06
+ * @LastEditTime: 2022-04-14 17:59:56
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -38,28 +40,60 @@
       rel="stylesheet"
       href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"
     />
-    <script src="https://webapi.amap.com/maps?v=1.4.15&key=0cf70b36fee172f62c4614b40d417b3b&plugin=AMap.MouseTool,AMap.PolyEditor"></script>
+    <script type="text/javascript">
+      window._AMapSecurityConfig = {
+        securityJsCode: "7b7316af66e9cb8f4638ef32a597351e",
+      };
+    </script>
+
+    <script src="https://webapi.amap.com/maps?v=2.0&key=b2dfabf70621a02c4e5305e704098226"></script>
+
     <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
   </head>
   <body>
     <div id="container"></div>
-    <div class="input-card" style="width: 200px">
+    <div class="input-card">
       <h4 style="margin-bottom: 10px; font-weight: 600">
-        利用mouseTool绘制覆盖物
+        逆地理编码，根据经纬度获取地址信息
       </h4>
-      <button class="btn" onclick="polygon.drawPolygon()" style="margin-bottom: 5px">
+      <div class="input-item">
+        <button onclick="Marker.bind()" class="btn" style="margin-right: 1rem">
+          绑定事件
+        </button>
+        <button onclick="Marker.unbind()" class="btn">解绑事件</button>
+      </div>
+      <div class="input-item">
+        <div class="input-item-prepend">
+          <span class="input-item-text">经纬度</span>
+        </div>
+        <input id="lnglat" type="text" value="116.39,39.9" />
+      </div>
+      <div class="input-item">
+        <div class="input-item-prepend">
+          <span class="input-item-text">地址</span>
+        </div>
+        <input id="address" type="text" disabled />
+      </div>
+      <input id="regeo" type="button" class="btn" value="经纬度 -> 地址" />
+      <h4 style="margin-bottom: 10px; font-weight: 600">绘制覆盖物</h4>
+
+      <button
+        class="btn"
+        onclick="Polygon.drawPolygon()"
+        style="margin-bottom: 5px"
+      >
         绘制多边形
       </button>
       <button
         class="btn"
-        onclick="polygon.polyEditor?.open()"
+        onclick="Polygon.polyEditor?.open()"
         style="margin-bottom: 5px"
       >
         开始编辑
       </button>
       <button
         class="btn"
-        onclick="polygon.polyEditor?.close()"
+        onclick="Polygon.polyEditor?.close()"
         style="margin-bottom: 5px"
       >
         结束编辑
@@ -73,22 +107,24 @@
           </tr>
           <tr>
             <td>
-              <input id="tipinput" style="width: 125px" />
+              <input id="tipinput" style="width: 189px" />
             </td>
             <td>
-              <button class="btn" onclick="polygon.addPath()">添加</button>
+              <button class="btn" onclick="Polygon.addPath()">添加</button>
             </td>
           </tr>
         </table>
       </div>
       <button
         class="btn"
-        onclick="polygon.removeAllOverlay()"
+        onclick="Polygon.removeAllOverlay()"
         style="margin-bottom: 5px"
       >
         清除地图上所有添加的覆盖物
       </button>
-      <button class="btn" onclick="polygon.writeData()">导出多边形数据数据</button>
+      <button class="btn" onclick="Polygon.writeData()">
+        导出多边形数据数据
+      </button>
     </div>
     <script type="module" src="./functions.js"></script>
   </body>

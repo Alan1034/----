@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-14 16:28:50
- * @LastEditTime: 2022-04-12 15:32:10
+ * @LastEditTime: 2022-04-14 18:36:49
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -16,11 +16,21 @@
 
 export default class MapData {
   constructor() {
+    this.map
+  }
+
+  loadMap = () => {
     this.map = new AMap.Map("container", { //设置地图容器id
       // viewMode: "3D",         //是否为3D地图模式
       zoom: 14,                //初始化地图级别
       center: [116.434381, 39.898515], //初始化地图中心点位置
     })
-  }
 
+    return new Promise((resolve) => {
+      this.map.on("complete", () => {
+        console.log("地图加载完成！");
+        resolve()
+      });
+    })
+  }
 }

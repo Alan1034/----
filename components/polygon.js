@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-04-12 10:58:59
- * @LastEditTime: 2022-04-12 18:37:09
+ * @LastEditTime: 2022-04-14 18:37:46
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: polygon
@@ -15,7 +15,7 @@ export default class Polygon extends MapData {
 
   constructor() {
     super()
-    this.mouseTool = new AMap.MouseTool(this.map);
+    this.mouseTool
     this.polyEditor;
     this.path;
 
@@ -28,19 +28,26 @@ export default class Polygon extends MapData {
       strokeOpacity: 1,
       strokeWeight: 6,
       strokeOpacity: 0.2,
-      fillColor: "#1791fc",
+      fillColor: '#1791fc',
       fillOpacity: 0.4,
       // 线样式还支持 'dashed'
       strokeStyle: "solid",
       // strokeStyle是dashed时有效
       // strokeDasharray: [30,10],
-    });
+    })
   }
 
-  draw = () => {
+  draw = async () => {
+    console.log(this.map)
+    await new Promise((resolve) => {
+      AMap.plugin(["AMap.MouseTool", "AMap.PolygonEditor"], () => {
+        resolve();
+      });
+    });
+    this.mouseTool = new AMap.MouseTool(this.map)
     this.mouseTool.on("draw", (event) => {
       // event.obj 为绘制出来的覆盖物对象
-      this.path = event.obj.w.path
+      this.path = event.obj.getPath()
       log.info("覆盖物对象绘制完成");
       new Notification("地图工具", { body: "覆盖物对象绘制完成" })
 
@@ -49,9 +56,10 @@ export default class Polygon extends MapData {
     });
   }
 
+
   edit = (polygon) => {
     if (!polygon) return;
-    const polyEditor = new AMap.PolyEditor(this.map, polygon);
+    const polyEditor = new AMap.PolygonEditor(this.map, polygon);
 
     polyEditor.on("addnode", (event) => {
       log.info("触发事件：addnode");
@@ -66,10 +74,10 @@ export default class Polygon extends MapData {
     });
 
     polyEditor.on("end", (event) => {
-      log.info("触发事件： end", event.target.w.path);
+      log.info("触发事件： end", event.target.getPath());
       // event.target 即为编辑后的多边形对象
-      new Notification("多边形路径", { body: JSON.stringify(event.target.w.path) })
-      this.writeData(event.target.w.path)
+      new Notification("多边形路径", { body: JSON.stringify(event.target.getPath()) })
+      this.writeData(event.target.getPath())
     });
     return polyEditor;
   };
@@ -104,12 +112,10 @@ export default class Polygon extends MapData {
       return new AMap.LngLat(item.lng, item.lat)
     });
     this.path = polylinePath
-
     const polygon = new AMap.Polygon({
       path: this.path,
       fillOpacity: 0.35,
     });
-
     this.map.add(polygon)
     this.map.setFitView(polygon);
     this.polyEditor = this.edit(polygon);

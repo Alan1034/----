@@ -1,11 +1,11 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-14 16:22:58
- * @LastEditTime: 2022-03-15 16:17:35
+ * @LastEditTime: 2022-04-15 16:30:39
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
- * @FilePath: \选区工具\main.js
+ * @FilePath: \desktop-map\main.js
  * 
  */
 const { app, BrowserWindow } = require('electron')
@@ -20,7 +20,8 @@ function createWindow() {
       // nodeIntegrationInWorker: true,
       // contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
-    }
+    },
+    icon: path.join(__dirname, './assets/favicon.png'),
   })
 
   win.loadFile('index.html')

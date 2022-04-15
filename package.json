@@ -1,6 +1,6 @@
 {
   "name": "desktop-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Select District Gadge",
   "main": "main.js",
   "scripts": {

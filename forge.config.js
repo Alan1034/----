@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-04-15 16:53:53
- * @LastEditTime: 2022-04-15 18:10:12
+ * @LastEditTime: 2022-04-15 18:52:20
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: electron-forge打包配置
@@ -19,7 +19,8 @@ module.exports = {
     {
       "name": "@electron-forge/maker-squirrel",
       "config": {
-        "name": "desktop_map"
+        "name": "desktop_map",
+        "setupIcon": "./assets/icon.ico",
       }
     },
     {

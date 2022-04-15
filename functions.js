@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-04-12 15:32:29
- * @LastEditTime: 2022-04-14 18:35:00
+ * @LastEditTime: 2022-04-15 14:48:33
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -18,9 +18,10 @@ import Marker from "./components/marker.js";
 
 
 const loadApp = async () => {
-  window.MapData = new MapData
-  await window.MapData.loadMap()
-  
+  const mapData = new MapData
+  await mapData.loadMap()
+  window.map = mapData.map
+
   window.Marker = new Marker
   window.Polygon = new Polygon
   // 加载地图工具，绘制事件

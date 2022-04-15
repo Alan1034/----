@@ -3,7 +3,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-11 17:52:18
- * @LastEditTime: 2022-04-14 17:59:56
+ * @LastEditTime: 2022-04-15 14:35:33
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -58,9 +58,9 @@
       </h4>
       <div class="input-item">
         <button onclick="Marker.bind()" class="btn" style="margin-right: 1rem">
-          绑定事件
+          绑定编码事件
         </button>
-        <button onclick="Marker.unbind()" class="btn">解绑事件</button>
+        <button onclick="Marker.unbind()" class="btn">解绑编码事件</button>
       </div>
       <div class="input-item">
         <div class="input-item-prepend">
@@ -76,7 +76,9 @@
       </div>
       <input id="regeo" type="button" class="btn" value="经纬度 -> 地址" />
       <h4 style="margin-bottom: 10px; font-weight: 600">绘制覆盖物</h4>
-
+      <div class="input-item">
+        <button onclick="Polygon.unbind()" class="btn">解绑绘制事件</button>
+      </div>
       <button
         class="btn"
         onclick="Polygon.drawPolygon()"

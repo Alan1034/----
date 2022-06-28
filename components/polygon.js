@@ -90,8 +90,9 @@ export default class Polygon {
     polyEditor.on("end", (event) => {
       // log.info("触发事件： end", event.target.getPath());
       // event.target 即为编辑后的多边形对象
+      this.path = event.target.getPath()
       new Notification("多边形路径", { body: JSON.stringify(event.target.getPath()) })
-      this.writeData(event.target.getPath())
+      this.writeData()
     });
     return polyEditor;
   };

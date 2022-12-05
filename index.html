@@ -3,7 +3,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-11 17:52:18
- * @LastEditTime: 2022-04-15 16:38:44
+ * @LastEditTime: 2022-12-05 10:57:06
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -72,9 +72,16 @@
         <div class="input-item-prepend">
           <span class="input-item-text">地址</span>
         </div>
-        <input id="address" type="text" disabled />
+        <input id="address" type="text" />
       </div>
-      <input id="regeo" type="button" class="btn" value="经纬度 -> 地址" />
+      <input
+        style="margin-bottom: 5px"
+        id="regeo"
+        type="button"
+        class="btn"
+        value="经纬度 -> 地址"
+      />
+      <input id="geo" type="button" class="btn" value="地址 -> 经纬度" />
       <h4 style="margin-bottom: 10px; font-weight: 600">绘制覆盖物</h4>
       <div class="input-item">
         <button onclick="Polygon.unbind()" class="btn">解绑绘制事件</button>

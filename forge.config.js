@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-04-15 16:53:53
- * @LastEditTime: 2022-04-15 18:52:20
+ * @LastEditTime: 2022-07-25 15:01:19
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: electron-forge打包配置
@@ -23,19 +23,19 @@ module.exports = {
         "setupIcon": "./assets/icon.ico",
       }
     },
-    {
-      "name": "@electron-forge/maker-zip",
-      "platforms": [
-        "darwin"
-      ]
-    },
-    {
-      "name": "@electron-forge/maker-deb",
-      "config": {}
-    },
-    {
-      "name": "@electron-forge/maker-rpm",
-      "config": {}
-    }
+    // {
+    //   "name": "@electron-forge/maker-zip",
+    //   "platforms": [
+    //     "darwin"
+    //   ]
+    // },
+    // {
+    //   "name": "@electron-forge/maker-deb",
+    //   "config": {}
+    // },
+    // {
+    //   "name": "@electron-forge/maker-rpm",
+    //   "config": {}
+    // }
   ]
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-04-13 17:45:44
- * @LastEditTime: 2022-12-05 11:02:32
+ * @LastEditTime: 2023-03-21 11:25:48
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 逆地理坐标
@@ -16,14 +16,24 @@ export default class Marker {
       icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
       anchor: 'bottom-center'
     })
-    new AMap.plugin(["AMap.Geocoder"], () => {
-      console.info("AMap.Geocoder", "加载完成")
+    new AMap.plugin(['AMap.AutoComplete', "AMap.Geocoder"], () => {
+      console.info('AMap.AutoComplete', "AMap.Geocoder", "加载完成")
       this.geocoder = new AMap.Geocoder({
         // city: "010", //城市设为北京，默认：“全国”
-        radius: 1000 //范围，默认：500
+        // radius: 1000 //范围，默认：500
       });
     });
 
+  }
+
+  autoComplete = () => {
+    const autoOptions = {
+      // 城市，默认全国 
+      city: document.getElementById('city').value,
+      // 使用联想输入的input的id
+      input: "address"
+    }
+    new AMap.AutoComplete(autoOptions)
   }
 
   mapClick = async () => {
@@ -79,6 +89,7 @@ export default class Marker {
   geoCode = () => {
     const address = document.getElementById('address').value;
     this.geocoder.getLocation(address, (status, result) => {
+      console.log(status, result)
       if (status === 'complete' && result.geocodes.length) {
         var lnglat = result.geocodes[0].location
         document.getElementById('lnglat').value = lnglat;

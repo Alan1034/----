@@ -18,7 +18,7 @@ import Marker from "./components/marker.js";
 
 
 const loadApp = async () => {
-  window.defaultLnglat = [-0.000815,51.477851];
+  window.defaultLnglat = [-0.00085,51.477421];
   document.getElementById("lnglat").value = window.defaultLnglat;
   const mapData = new MapData
   await mapData.loadMap()

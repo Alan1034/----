@@ -38,10 +38,14 @@ export default class Marker {
 
   mapClick = async () => {
     // 逆地理编码（坐标 -> 地址）
-    document.getElementById("regeo").onclick = this.regeoCode;
+    document.getElementById("regeo").onclick = () => {
+      this.regeoCode();
+      window.map.setFitView(this.marker);
+    }
     document.getElementById('lnglat').onkeydown = (e) => {
       if (e.keyCode === 13) {
         this.regeoCode();
+        window.map.setFitView(this.marker);
         return false;
       }
       return true;

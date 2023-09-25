@@ -37,6 +37,14 @@
     </style>
     <title>覆盖物的绘制和编辑</title>
     <script src="mapLinks.js"></script>
+    <script>
+      if (!window._AMapSecurityConfig) {
+        new Notification("警告", {
+          body:
+            `请检查根目录的mapLinks.js文件并传入window._AMapSecurityConfig`
+        })
+      }
+    </script>
     <link
       rel="stylesheet"
       href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"

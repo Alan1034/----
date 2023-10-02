@@ -1,7 +1,7 @@
 <!--
  * @Author: 陈德立*******419287484@qq.com
  * @Date: 2022-03-15 18:34:04
- * @LastEditTime: 2022-03-16 10:48:47
+ * @LastEditTime: 2023-10-02 23:49:22
  * @LastEditors: 陈德立*******419287484@qq.com
  * @Github: https://github.com/Alan1034
  * @Description: 
@@ -18,7 +18,11 @@ npm run make
 
 windows环境下数据文件会生成到桌面
 under windows environment the data file should created in Desktop
+
 路径内不能有中文
+
+如果打开后地图无法显示，请到高德开放平台 https://console.amap.com/dev/key/app 申请Key和安全密钥并根据提示进行修改
+If the map cannot be displayed after opening, please go to the Gaode Open Platform https://console.amap.com/dev/key/app Apply for a Key and security key and modify them according to the prompts
 
 逆地理编码功能：
 
